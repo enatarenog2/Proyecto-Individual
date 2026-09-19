@@ -158,7 +158,7 @@ public class FormCreate extends JFrame {
 	        	    precio,
 	        	    existencias,
 	        	    anioPublicacion,
-	        	    LocalDate.now()
+	        	    fechaIngreso
 	        	);
 	        libroDAO.crear(libro);
 	        

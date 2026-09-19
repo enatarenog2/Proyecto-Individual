@@ -130,6 +130,17 @@ public class VentanaPrincipal extends JFrame {
 		btnDeleteBook.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		contentPane.add(btnDeleteBook);
 		
+		JButton btnVerResumen = new JButton("Ver Resumen");
+		btnVerResumen.setForeground(Color.WHITE);
+		btnVerResumen.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		btnVerResumen.setBackground(Color.BLUE);
+		btnVerResumen.setBounds(356, 442, 129, 40);
+		contentPane.add(btnVerResumen);
+		btnVerResumen.addActionListener(e -> mostrarResumen());
+		
+		
+		
+		
 		btnDeleteBook.addActionListener(e -> {
 			
 		    int filaSeleccionada = table.getSelectedRow();
@@ -205,5 +216,44 @@ public class VentanaPrincipal extends JFrame {
 	    }
 	}
 	
+	
+	
+	
+	
+	private void mostrarResumen() {
+		
+		//metodo para contar todos los registros
+
+	    try {
+	        List<Libro> libros = libroDAO.listarTodos();
+
+	        int totalRegistros = libros.size();
+	        int contador = 0;
+
+	        for (Libro libro : libros) {
+
+	            if (libro.getExistencias() > 0) {
+	                contador++;
+	            }
+	        }
+
+	        JOptionPane.showMessageDialog(
+	            this,
+	            "Total de registros: " + totalRegistros
+	            + "\nLibros con existencias: " + contador,
+	            "Resumen",
+	            JOptionPane.INFORMATION_MESSAGE
+	        );
+
+	    } catch (RuntimeException e) {
+
+	        JOptionPane.showMessageDialog(
+	            this,
+	            "Error al obtener el resumen: " + e.getMessage(),
+	            "Error",
+	            JOptionPane.ERROR_MESSAGE
+	        );
+	    }
+	}
 	
 }
