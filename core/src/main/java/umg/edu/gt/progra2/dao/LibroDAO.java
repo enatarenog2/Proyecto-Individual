@@ -2,11 +2,13 @@ package umg.edu.gt.progra2.dao;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +26,8 @@ public class LibroDAO {
     public Libro crear(Libro libro) {
 
         String sql = "INSERT INTO libros "
-                + "(titulo, autor, categoria, precio, existencias, anio_publicacion) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+                + "(titulo, autor, categoria, precio, existencias, anio_publicacion,fecha_ingreso) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement statement = conexion.prepareStatement(
@@ -37,6 +39,7 @@ public class LibroDAO {
             statement.setBigDecimal(4, libro.getPrecio());
             statement.setInt(5, libro.getExistencias());
             statement.setInt(6, libro.getAnioPublicacion());
+            statement.setDate(7, Date.valueOf(libro.getFechaIngreso()));
 
             statement.executeUpdate();
 
@@ -57,9 +60,9 @@ public class LibroDAO {
     
     public List<Libro> listarTodos() {
 
-        String sql = "SELECT id, titulo, autor, categoria, precio, "
-                + "existencias, anio_publicacion "
-                + "FROM libros ORDER BY id";
+    	String sql = "SELECT id, titulo, autor, categoria, precio, "
+    	        + "existencias, anio_publicacion, fecha_ingreso "
+    	        + "FROM libros ORDER BY id";
 
         List<Libro> libros = new ArrayList<>();
 
@@ -81,11 +84,11 @@ public class LibroDAO {
     
     
     public Optional<Libro> buscarPorId(int id) {
-
-        String sql = "SELECT id, titulo, autor, categoria, precio, "
-                + "existencias, anio_publicacion "
-                + "FROM libros WHERE id = ?";
-
+    	
+    	String sql = "SELECT id, titulo, autor, categoria, precio, "
+    	        + "existencias, anio_publicacion, fecha_ingreso "
+    	        + "FROM libros WHERE id = ?";
+        
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement statement = conexion.prepareStatement(sql)) {
 
@@ -110,7 +113,7 @@ public class LibroDAO {
 
         String sql = "UPDATE libros SET "
                 + "titulo = ?, autor = ?, categoria = ?, precio = ?, "
-                + "existencias = ?, anio_publicacion = ? "
+                + "existencias = ?, anio_publicacion = ?, fecha_ingreso = ?  "
                 + "WHERE id = ?";
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
@@ -122,7 +125,9 @@ public class LibroDAO {
             statement.setBigDecimal(4, libro.getPrecio());
             statement.setInt(5, libro.getExistencias());
             statement.setInt(6, libro.getAnioPublicacion());
-            statement.setInt(7, libro.getId());
+            statement.setDate(7, Date.valueOf(libro.getFechaIngreso()));
+            statement.setInt(8, libro.getId());
+            
 
             int filasAfectadas = statement.executeUpdate();
 
@@ -165,6 +170,7 @@ public class LibroDAO {
         BigDecimal precio = resultado.getBigDecimal("precio");
         int existencias = resultado.getInt("existencias");
         int anioPublicacion = resultado.getInt("anio_publicacion");
+        LocalDate fechaIngreso = resultado.getDate("fecha_ingreso").toLocalDate();
         
         Libro libro = new Libro(
                 titulo,
@@ -172,7 +178,8 @@ public class LibroDAO {
                 categoria,
                 precio,
                 existencias,
-                anioPublicacion
+                anioPublicacion,
+                fechaIngreso
         );
 
         libro.setId(id);

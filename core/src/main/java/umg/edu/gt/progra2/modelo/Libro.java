@@ -1,6 +1,7 @@
 package umg.edu.gt.progra2.modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Libro {
 	
@@ -11,6 +12,7 @@ public class Libro {
 	    private BigDecimal precio;
 	    private int existencias;
 	    private int anioPublicacion;
+	    private LocalDate fechaIngreso;
 	    
 	    
 	    public Libro() {
@@ -18,7 +20,7 @@ public class Libro {
 	    
 	    
 		public Libro(String titulo, String autor, String categoria, BigDecimal precio, int existencias,
-				int anioPublicacion) {
+				int anioPublicacion, LocalDate fechaIngreso) {
 			
 		    setTitulo(titulo);
 		    setAutor(autor);
@@ -26,6 +28,7 @@ public class Libro {
 		    setPrecio(precio);
 		    setExistencias(existencias);
 		    setAnioPublicacion(anioPublicacion);
+		    setFechaIngreso(fechaIngreso);
 		}
 	    
 		public int getId() {
@@ -109,6 +112,19 @@ public class Libro {
 		    }
 
 		    this.anioPublicacion = anioPublicacion;
+		}
+		
+		
+		public LocalDate getFechaIngreso() {
+		    return fechaIngreso;
+		}
+
+		public void setFechaIngreso(LocalDate fechaIngreso) {
+		    if (fechaIngreso == null) {
+		        throw new IllegalArgumentException("La fecha de ingreso es obligatoria.");
+		    }
+
+		    this.fechaIngreso = fechaIngreso;
 		}
 		
 		@Override

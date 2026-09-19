@@ -74,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 		    new Object[][] {
 		    },
 		    new String[] {
-		        "ID", "Titulo", "Autor", "Categoria", "Precio", "Existencias"
+		        "ID", "Titulo", "Autor", "Categoria", "Precio", "Existencias", "Fecha Ingreso"
 		    }
 		));
 
@@ -176,7 +176,6 @@ public class VentanaPrincipal extends JFrame {
 		
 	
 	private void cargarLibros() {
-
 	    try {
 	        List<Libro> libros = libroDAO.listarTodos();
 
@@ -185,19 +184,18 @@ public class VentanaPrincipal extends JFrame {
 	        modelo.setRowCount(0);
 
 	        for (Libro libro : libros) {
-
 	            modelo.addRow(new Object[] {
-	            		libro.getId(),
-	            	    libro.getTitulo(),
-	            	    libro.getAutor(),
-	            	    libro.getCategoria(),
-	            	    libro.getPrecio(),
-	            	    libro.getExistencias()
+	                libro.getId(),
+	                libro.getTitulo(),
+	                libro.getAutor(),
+	                libro.getCategoria(),
+	                libro.getPrecio(),
+	                libro.getExistencias(),
+	                libro.getFechaIngreso()
 	            });
 	        }
 
 	    } catch (RuntimeException e) {
-
 	        JOptionPane.showMessageDialog(
 	            this,
 	            "Error al cargar los libros: " + e.getMessage(),

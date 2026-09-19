@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.swing.JOptionPane;
 import umg.edu.gt.progra2.dao.LibroDAO;
 import umg.edu.gt.progra2.modelo.Libro;
@@ -147,6 +149,7 @@ public class FormCreate extends JFrame {
 	        BigDecimal precio = new BigDecimal(precioTexto);
 	        int existencias = Integer.parseInt(existenciasTexto);
 	        int anioPublicacion = Integer.parseInt(anioTexto);
+	        LocalDate fechaIngreso = LocalDate.now();
 	        
 	        Libro libro = new Libro(
 	        	    titulo,
@@ -154,7 +157,8 @@ public class FormCreate extends JFrame {
 	        	    categoria,
 	        	    precio,
 	        	    existencias,
-	        	    anioPublicacion
+	        	    anioPublicacion,
+	        	    LocalDate.now()
 	        	);
 	        libroDAO.crear(libro);
 	        

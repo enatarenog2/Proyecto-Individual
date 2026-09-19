@@ -30,6 +30,8 @@ public class FormEdit extends JFrame {
 	private JPanel panel;
 	private JButton btnSave;
 	private JButton btnCancel;
+	private JLabel lblfechaIngreso;
+	private JTextField textfechaIngreso;
 
 	/**
 	 * Launch the application.
@@ -56,68 +58,68 @@ public class FormEdit extends JFrame {
 		
 		JLabel lblTitle = new JLabel("Titulo: ");
 		lblTitle.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblTitle.setBounds(27, 65, 85, 29);
+		lblTitle.setBounds(27, 51, 85, 29);
 		contentPane.add(lblTitle);
 		
 		textTitle = new JTextField();
 		textTitle.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		textTitle.setBounds(122, 62, 598, 36);
+		textTitle.setBounds(122, 47, 598, 36);
 		contentPane.add(textTitle);
 		textTitle.setColumns(10);
 		
 		JLabel lblAuthor = new JLabel("Autor: ");
 		lblAuthor.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblAuthor.setBounds(27, 127, 85, 29);
+		lblAuthor.setBounds(27, 102, 85, 29);
 		contentPane.add(lblAuthor);
 		
 		textAuthor = new JTextField();
 		textAuthor.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		textAuthor.setColumns(10);
-		textAuthor.setBounds(122, 124, 598, 36);
+		textAuthor.setBounds(122, 94, 598, 36);
 		contentPane.add(textAuthor);
 		
 		JLabel lblCategory = new JLabel("Categoria: ");
 		lblCategory.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblCategory.setBounds(27, 184, 85, 29);
+		lblCategory.setBounds(27, 155, 85, 29);
 		contentPane.add(lblCategory);
 		
 		textCategory = new JTextField();
 		textCategory.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		textCategory.setColumns(10);
-		textCategory.setBounds(122, 181, 598, 36);
+		textCategory.setBounds(122, 151, 598, 36);
 		contentPane.add(textCategory);
 		
 		JLabel lblPrice = new JLabel("Precio: ");
 		lblPrice.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblPrice.setBounds(27, 240, 85, 29);
+		lblPrice.setBounds(27, 203, 85, 29);
 		contentPane.add(lblPrice);
 		
 		textPrice = new JTextField();
 		textPrice.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		textPrice.setColumns(10);
-		textPrice.setBounds(122, 237, 598, 36);
+		textPrice.setBounds(122, 199, 598, 36);
 		contentPane.add(textPrice);
 		
 		JLabel lblStocks = new JLabel("Existencias: ");
 		lblStocks.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblStocks.setBounds(27, 293, 85, 29);
+		lblStocks.setBounds(27, 263, 85, 29);
 		contentPane.add(lblStocks);
 		
 		JLabel lblYear = new JLabel("Año de Publicacion: ");
 		lblYear.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblYear.setBounds(27, 333, 134, 29);
+		lblYear.setBounds(27, 303, 134, 29);
 		contentPane.add(lblYear);
 		
 		textStocks = new JTextField();
 		textStocks.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		textStocks.setColumns(10);
-		textStocks.setBounds(122, 284, 598, 36);
+		textStocks.setBounds(122, 246, 598, 36);
 		contentPane.add(textStocks);
 		
 		textYear = new JTextField();
 		textYear.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		textYear.setColumns(10);
-		textYear.setBounds(171, 330, 549, 36);
+		textYear.setBounds(171, 293, 549, 36);
 		contentPane.add(textYear);
 		
 		JLabel lblEditarLibro = new JLabel("Editar Libro");
@@ -145,6 +147,17 @@ public class FormEdit extends JFrame {
 		btnCancel.setBackground(Color.WHITE);
 		btnCancel.setBounds(438, 30, 180, 45);
 		panel.add(btnCancel);
+		
+		lblfechaIngreso = new JLabel("Fecha de Ingreso:");
+		lblfechaIngreso.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		lblfechaIngreso.setBounds(27, 343, 134, 29);
+		contentPane.add(lblfechaIngreso);
+		
+		textfechaIngreso = new JTextField();
+		textfechaIngreso.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		textfechaIngreso.setColumns(10);
+		textfechaIngreso.setBounds(171, 336, 549, 36);
+		contentPane.add(textfechaIngreso);
 		btnCancel.addActionListener(e -> dispose());
 		
 		
